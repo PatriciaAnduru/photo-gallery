@@ -23,3 +23,15 @@ def home(request):
         def search_by_title(cls,search_term):
             Pixel = cls.objects.filter(title__icontains=search_term)
             return Pixel
+
+
+# def search_results(request):
+#     if 'imagesearch' in request.GET and request.GET["imagesearch"]:
+#         title = request.GET.get("imagesearch")
+#         searched_images = Pixel.search_by_category(title)
+#         message = f"{title}"
+#         print(searched_images)
+#         return render(request, 'pixels/search_results.html', {"message": message, "images": searched_images})
+#     else:
+#         message = "You haven't searched for any image category"
+#         return render(request, 'pixels/search_results.html', {"message": message})

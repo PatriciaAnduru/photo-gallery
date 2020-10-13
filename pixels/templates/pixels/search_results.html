@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+
+        {% if pixel %}
+        <h2 class="text-center text-white pt-2" id="found">Found {{ images|length }} images in '{{message}}' category</h2>
+        {% else %}
+        <h2 class="text-center text-white pt-4" id="foundnon"> Found 0 images for your search {{message}}</h2>
+        {% endif %} {% if pixel %}
+        <div class="album py-5 bg-light">
+            <div class="container">
+
+                <div class="row">
+                    {% for pixel in pixels%}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+
+                            <img src="{{pixel.image.url}}" class="bd-placeholder-img card-img-top" width="100%" height="225" data-toggle="modal" data-target="#modal{{ pixel.id }}" alt="image">
+
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal{{ pixel.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <!-- <h3 class="modal-title text-center" id="title">{{image.title}}</h3> -->
+                                    <img src="{{pixel.image.url}}" class="img-responsive w-100 btn btn-outline-info" alt="image" height="300">
+
+                                    <p class="text-center">{{pixel.summary}}</p>
+                                    <p>Location taken : {{pixel.Location}}</p>
+                                    <p>Title : {{pixel.title}}</p>
+                                    <p>Category : {{pixel.Category}}</p>
+                                    <p>Posted on :{{pixel.pub_date}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="text" value="{{pixel.image.url}}" id="copy" style="width:250px" class="form-control">
+
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div> {% endif %}
+    </div>
+</body>
+
+</html>

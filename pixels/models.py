@@ -11,11 +11,30 @@ class Pixel(models.Model):
     
     def __str__(self):
         return self.summary
-
+    
     @classmethod
-    def search_by_title(cls,search_term):
-        news = cls.objects.filter(title__icontains=search_term)
-        return news
+    def get_image_by_id(cls, id):
+        image = cls.objects.filter(id=id).all()
+        return image
+    
+    @classmethod
+    def search_by_category(cls, Category):
+        images = cls.objects.filter(Category__name__icontains=Category)
+        return images
+    
+    def __str__(self):
+        return self.name
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    # @classmethod
+    # def search_by_title(cls,search_term):
+    #     news = cls.objects.filter(title__icontains=search_term)
+    #     return news
 
 class Category(models.Model):
     category = models.CharField(max_length=80, null= True)
