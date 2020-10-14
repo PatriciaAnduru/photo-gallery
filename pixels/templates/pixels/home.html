@@ -47,7 +47,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="#">Pixel Gallery</a>
+            <a class="navbar-brand" href="/">Pixel Gallery</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -58,7 +58,7 @@
                         <!-- <a class="nav-link" href="#about">About <span class="sr-only">(current)</span></a> -->
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" role="search">
+                <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search'%}">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search Category..." name="pixel" aria-label="Search">
 
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
