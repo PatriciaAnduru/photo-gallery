@@ -77,5 +77,5 @@ If you have any question or contributions, please email me at [andurupatricia@gm
   
 ## License 
 
-* [License]
+* [ MIT License]
 * Copyright (c) 2020 **Patricia Anduru**
