@@ -6,7 +6,7 @@ class Pixel(models.Model):
     image = models.ImageField(upload_to='images/')
     summary = models.CharField(max_length=200)
     Location=models.TextField(max_length=30,null=False,blank=False)
-    Category=models.TextField(max_length=30)
+    Category = models.ForeignKey('Category', on_delete=models.CASCADE)
     pud_date=models.DateTimeField(auto_now=True)
     
     def __str__(self):
@@ -18,12 +18,12 @@ class Pixel(models.Model):
         return image
     
     @classmethod
-    def search_by_category(cls, Category):
-        images = cls.objects.filter(Category__name__icontains=Category)
+    def search_by_category(cls, term):
+        images = cls.objects.filter(Category__category__icontains=term)
         return images
     
     def __str__(self):
-        return self.name
+        return self.title
 
     def save_image(self):
         self.save()
@@ -38,11 +38,15 @@ class Pixel(models.Model):
 
 class Category(models.Model):
     category = models.CharField(max_length=80, null= True)
+
     def save_category(self):
         self.save()
+
     def delete_category(self):
         self.delete()
+
     def update_category(self):
         self.update()
+        
     def __str__(self):
         return self.category
